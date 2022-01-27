@@ -97,14 +97,14 @@ const Home = () => {
     <>
       <input type='text' placeholder='search ...' onChange={handleSearch}></input>
       <button onClick={randomise}>Randomise</button>
-      <Container className="mt-4">
+      <Container>
         <Row>
           {smallMemeSample.map((meme, idx) => 
-            <Col key={idx} md="6" lg="4" className='mb-4'> {/* if we use the unique function above  change the key to the meme.url */}
-                <Card style={{ width: '16rem' }}>
-                  <Card.Img variant="danger" src={meme.preview[1]} /> 
-                  <Card.Body>
-                    <Card.Title>{meme.title}</Card.Title>
+            <Col key={idx} true lg="auto" className='mb-2'> {/* if we use the unique function above  change the key to the meme.url */}
+                <Card> 
+                <Card.Img src={meme.preview[1]} />
+                  <Card.Body className='title'>
+                    <Card.Title >{meme.title}</Card.Title>
                   </Card.Body>
                 </Card>
             </Col>
