@@ -13,7 +13,6 @@ const Hometwo = () => {
   const smallMemeSampleSize = 25
   const minimumMemeSampleSize = 1
   const [ memeSample, setMemeSample ] = useState([])
-  //const [ searchedMemes, setSearchedMemes ] = useState([])
   const [ smallMemeSample, setSmallMemeSample ] = useState([])
   const [ searchBarText, setSearchBarText ] = useState('')
 
@@ -32,7 +31,6 @@ const Hometwo = () => {
           }
         }
         setMemeSample(memeSampleToAdd)
-        //setSearchedMemes(rawSample)
         const smallMemeSampleToAdd = []
         for (let i = 0; i < smallMemeSampleSize; i++){
           smallMemeSampleToAdd.push(memeSampleToAdd[Math.floor(Math.random() * memeSampleToAdd.length)])
@@ -51,13 +49,14 @@ const Hometwo = () => {
         for (let i = 0; i < smallMemeSampleSize; i++){
           smallMemeSampleToAdd.push(memeSample[Math.floor(Math.random() * memeSample.length)])
         }
-        console.log(smallMemeSampleToAdd)
         setSmallMemeSample(smallMemeSampleToAdd)
   }
+
 
   const handleChange = (e) => {
     setSearchBarText(e.target.value)
   }
+
 
   const handleSearch = async(e) => {
     e.preventDefault()
@@ -65,8 +64,7 @@ const Hometwo = () => {
       const { data } = await axios.get(`https://meme-api.herokuapp.com/gimme/${searchBarText.replace(/\s/g, '')}/${smallMemeSampleSize}`)
       setSmallMemeSample(data.memes)
     } catch {
-      console.log('subreddit does not exsist')
-
+      console.log('subreddit does not exsist- here are some memes we think you would like')
       let searchAttemptLayer2 = []
       if (searchBarText !== ''){
         for (let i = 0; i < memeSample.length; i++){
@@ -75,33 +73,21 @@ const Hometwo = () => {
           }
         }
         if(searchAttemptLayer2.length < minimumMemeSampleSize){
-          searchAttemptLayer2 = [ ...memeSample ]
           console.log('search not found big enough sample')
+        } else {
+          setSmallMemeSample(searchAttemptLayer2.slice(0, smallMemeSampleSize))
         }
       } else {
-        searchAttemptLayer2 = [ ...memeSample ]
         console.log('nothing searched for')
       }
-
-      
-      setSmallMemeSample(searchAttemptLayer2.slice(0, smallMemeSampleSize))
     }
     
-      //let searchedMemesToAdd
-      //if (e.target.value !== ''){
-      //  searchedMemesToAdd = memeSample.filter(meme => meme.title.toLowerCase().includes(e.target.value.toLowerCase()))
-      //  //setMessage('No results- Please refine your search criteria')
-      //} else {
-      //  searchedMemesToAdd = [ ...memeSample ]
-      //}
-      //setSearchedMemes(searchedMemesToAdd)
-      //console.log(searchedMemesToAdd)
   }
 
   return (
     <>
       <form onSubmit={handleSearch}>
-      <input type='text' placeholder='search ...' onChange={handleChange} ></input>
+      <input type='text' placeholder='search a subreddit...' onChange={handleChange} ></input>
       <input type='submit' value='go'></input>
       </form>
       <button onClick={randomiseSmallSample}>Randomise</button>
