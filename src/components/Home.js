@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 //bootstrap
 import Card from 'react-bootstrap/Card'
 
@@ -7,11 +8,12 @@ import Card from 'react-bootstrap/Card'
 
 const Home = () => {
 
-  const smallMemeSampleSize = 25
+  const smallMemeSampleSize = 8
   const minimumMemeSampleSize = 1
   const [ memeSample, setMemeSample ] = useState([])
   const [ smallMemeSample, setSmallMemeSample ] = useState([])
   const [ searchBarText, setSearchBarText ] = useState('')
+  const [ currentStoredMeme, setCurrentStoredMeme ] = useState({})
 
   const subReddits = ['memes', 'dankememes', 'fellowkids', 'meme', 'animemes', 'dndmemes', 'lotrmemes', 'prequelmemes', 'historymemes', 'raimimemes', 'donaldtrumpmemes']
 
@@ -33,8 +35,6 @@ const Home = () => {
           smallMemeSampleToAdd.push(memeSampleToAdd[Math.floor(Math.random() * memeSampleToAdd.length)])
         }
         setSmallMemeSample(smallMemeSampleToAdd)
-
-        console.log(smallMemeSampleToAdd[0])
       } catch (err) {
         console.log(err)
       }
@@ -80,8 +80,18 @@ const Home = () => {
         console.log('nothing searched for')
       }
     }
-    
   }
+
+  const retrieveID = (meme) => {
+    return meme.postLink.split('/')[3]
+  }
+
+
+  const storeMeme = (meme) => {
+    setCurrentStoredMeme({ ...meme })
+    console.log(currentStoredMeme)
+  }
+
 
   return (
   <main>
@@ -89,31 +99,39 @@ const Home = () => {
       <>
       <div className='leftbox'>
         <Card>
-          <Card.Img src={smallMemeSample[0].preview[1]} />
-          <Card.Body className='title'>
-            <Card.Title>{smallMemeSample[0].title}</Card.Title>
-          </Card.Body>
+          <Link to={'/meme'} state={{ ...smallMemeSample[0] }}>
+            <Card.Img src={smallMemeSample[0].preview[1]} />
+            <Card.Body className='title'>
+              <Card.Title>{smallMemeSample[0].title}</Card.Title>
+            </Card.Body>
+          </Link>
         </Card>
       </div>
       <div className='middlebox'>
         <div className='middletopbox'>
           <Card>
-            <Card.Img src={smallMemeSample[1].preview[1]} /> 
-            <Card.Body className='title'>
-              <Card.Title>{smallMemeSample[1].title}</Card.Title>
-            </Card.Body>
+            <Link to={'/meme'} state={{ ...smallMemeSample[1] }}>
+              <Card.Img src={smallMemeSample[1].preview[1]} /> 
+              <Card.Body className='title'>
+                <Card.Title>{smallMemeSample[1].title}</Card.Title>
+              </Card.Body>
+            </Link>
           </Card>
           <Card>
-            <Card.Img src={smallMemeSample[2].preview[1]} />  
-            <Card.Body className='title'>
-              <Card.Title>{smallMemeSample[2].title}</Card.Title>
-            </Card.Body>
+            <Link to={'/meme'} state={{ ...smallMemeSample[2] }}>
+              <Card.Img src={smallMemeSample[2].preview[1]} />  
+              <Card.Body className='title'>
+                <Card.Title>{smallMemeSample[2].title}</Card.Title>
+              </Card.Body>
+            </Link>
           </Card>
           <Card>
-            <Card.Img src={smallMemeSample[3].preview[1]} /> 
-            <Card.Body className='title'>
-              <Card.Title>{smallMemeSample[3].title}</Card.Title>
-            </Card.Body>
+            <Link to={'/meme'} state={{ ...smallMemeSample[3] }}>
+              <Card.Img src={smallMemeSample[3].preview[1]} /> 
+              <Card.Body className='title'>
+                <Card.Title>{smallMemeSample[3].title}</Card.Title>
+              </Card.Body>
+            </Link>
           </Card>
         </div>
         <div className='middlemiddlebox'>
@@ -127,31 +145,39 @@ const Home = () => {
         </div>
         <div className='middlebottombox'>
           <Card>
+            <Link to={'/meme'} state={{ ...smallMemeSample[4] }}>
               <Card.Img src={smallMemeSample[4].preview[1]} /> 
               <Card.Body className='title'>
                 <Card.Title>{smallMemeSample[4].title}</Card.Title>
               </Card.Body>
-            </Card>
-            <Card>
+            </Link>
+          </Card>
+          <Card>
+            <Link to={'/meme'} state={{ ...smallMemeSample[5] }}>
               <Card.Img src={smallMemeSample[5].preview[1]} /> 
               <Card.Body className='title'>
                 <Card.Title>{smallMemeSample[5].title}</Card.Title>
               </Card.Body>
-            </Card>
-            <Card>
+            </Link>
+          </Card>
+          <Card>
+            <Link to={'/meme'} state={{ ...smallMemeSample[6] }}>
               <Card.Img src={smallMemeSample[6].preview[1]} /> 
               <Card.Body className='title'>
                 <Card.Title>{smallMemeSample[6].title}</Card.Title>
               </Card.Body>
-            </Card>
+            </Link>
+          </Card>
         </div>
       </div>
       <div className='rightbox'>
-      <Card>
-          <Card.Img src={smallMemeSample[7].preview[1]} /> 
-          <Card.Body className='title'>
-            <Card.Title>{smallMemeSample[7].title}</Card.Title>
-          </Card.Body>
+        <Card>
+          <Link to={'/meme'} state={{ ...smallMemeSample[7] }}>
+            <Card.Img src={smallMemeSample[7].preview[1]} /> 
+            <Card.Body className='title'>
+              <Card.Title>{smallMemeSample[7].title}</Card.Title>
+            </Card.Body>
+          </Link>
         </Card>
       </div>
     </>
