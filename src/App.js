@@ -1,12 +1,12 @@
 import React from 'react'
 
 //COMPONENTS
-import Home from './components/Home'
+import Hometwo from './components/Hometwo'
 
 
 const App = () => {
   return (
-    <Home />
+    <Hometwo />
   )
 }
 
