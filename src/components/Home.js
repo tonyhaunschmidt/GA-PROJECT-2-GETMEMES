@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+//Components
 //bootstrap
 import Card from 'react-bootstrap/Card'
+import CenterBar from './CenterBar'
 
 
 
@@ -116,15 +118,7 @@ const Home = () => {
             </Card.Body>
           </Card>
         </div>
-        <div className='middlemiddlebox'>
-          <>
-            <form onSubmit={handleSearch}>
-            <input type='text' placeholder='search a subreddit...' onChange={handleChange} ></input>
-            <input type='submit' value='go'></input>
-            </form>
-            <button onClick={randomiseSmallSample}>Randomise</button>
-          </>
-        </div>
+        <CenterBar handleSearch={handleSearch} randomiseSmallSample={randomiseSmallSample} handleChange={handleChange}  />
         <div className='middlebottombox'>
           <Card>
               <Card.Img src={smallMemeSample[4].preview[1]} /> 
