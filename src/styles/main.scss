@@ -1,3 +1,22 @@
 body {
-  height: 100vh;
+  background-color: #272626;
 }
+
+.title {
+  display: none;
+  font-size: small;
+}  
+
+.card {
+  max-width: 300px;
+  border-color: #272626;
+  &:hover{
+    width: 30vw;
+    .title {
+      display: initial;
+      font-size: small;
+    }    
+  }
+}
+
+
