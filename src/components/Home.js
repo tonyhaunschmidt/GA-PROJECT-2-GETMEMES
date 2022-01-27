@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+
+//Components
 import { Link } from 'react-router-dom'
+
 //bootstrap
 import Card from 'react-bootstrap/Card'
+import CenterBar from './CenterBar'
 
 
 
@@ -134,15 +138,7 @@ const Home = () => {
             </Link>
           </Card>
         </div>
-        <div className='middlemiddlebox'>
-          <>
-            <form onSubmit={handleSearch}>
-            <input type='text' placeholder='search a subreddit...' onChange={handleChange} ></input>
-            <input type='submit' value='go'></input>
-            </form>
-            <button onClick={randomiseSmallSample}>Randomise</button>
-          </>
-        </div>
+        <CenterBar handleSearch={handleSearch} randomiseSmallSample={randomiseSmallSample} handleChange={handleChange}  />
         <div className='middlebottombox'>
           <Card>
             <Link to={'/meme'} state={{ ...smallMemeSample[4] }}>
