@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-
-//Components
 import { Link } from 'react-router-dom'
+
+import CenterBar from './CenterBar'
 
 //bootstrap
 import Card from 'react-bootstrap/Card'
-import CenterBar from './CenterBar'
+
 
 
 
@@ -17,7 +17,6 @@ const Home = () => {
   const [ memeSample, setMemeSample ] = useState([])
   const [ smallMemeSample, setSmallMemeSample ] = useState([])
   const [ searchBarText, setSearchBarText ] = useState('')
-  const [ currentStoredMeme, setCurrentStoredMeme ] = useState({})
 
   const subReddits = ['memes', 'dankememes', 'fellowkids', 'meme', 'animemes', 'dndmemes', 'lotrmemes', 'prequelmemes', 'historymemes', 'raimimemes', 'donaldtrumpmemes']
 
@@ -85,17 +84,6 @@ const Home = () => {
       }
     }
   }
-
-  const retrieveID = (meme) => {
-    return meme.postLink.split('/')[3]
-  }
-
-
-  const storeMeme = (meme) => {
-    setCurrentStoredMeme({ ...meme })
-    console.log(currentStoredMeme)
-  }
-
 
   return (
   <main>
