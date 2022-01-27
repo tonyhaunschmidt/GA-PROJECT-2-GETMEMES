@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 //bootstrap
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
 
 
@@ -11,59 +8,33 @@ import Card from 'react-bootstrap/Card'
 const Home = () => {
 
   const smallMemeSampleSize = 25
+  const minimumMemeSampleSize = 1
   const [ memeSample, setMemeSample ] = useState([])
-  const [ searchedMemes, setSearchedMemes ] = useState([])
   const [ smallMemeSample, setSmallMemeSample ] = useState([])
+  const [ searchBarText, setSearchBarText ] = useState('')
 
-  const subReddits = ['memes', 'dankememes', 'fellowkids', 'meme', 'animemes', 'dndmemes', 'lotrmemes', 'prequelmemes', 'historymemes', 'raimimemes']
+  const subReddits = ['memes', 'dankememes', 'fellowkids', 'meme', 'animemes', 'dndmemes', 'lotrmemes', 'prequelmemes', 'historymemes', 'raimimemes', 'donaldtrumpmemes']
 
 
 
   useEffect(() => {
     const getMemes = async() => {
       try {
-        //let memeSampleToAdd = []
-
-        //for (let i = 0; i < subReddits.length; i++){
-        //  const partSample = await axios.get(`https://meme-api.herokuapp.com/gimme/${subReddits[i]}/50`)
-        //  memeSampleToAdd = [...memeSampleToAdd, partSample.data.memes]
-        //}
-        
-        const partSampleOne = await axios.get(`https://meme-api.herokuapp.com/gimme/${subReddits[0]}/50`)
-        const partSampleTwo = await axios.get(`https://meme-api.herokuapp.com/gimme/${subReddits[1]}/50`)
-        const partSampleThree = await axios.get(`https://meme-api.herokuapp.com/gimme/${subReddits[2]}/50`)
-        const partSampleFour = await axios.get(`https://meme-api.herokuapp.com/gimme/${subReddits[3]}/50`)
-        const partSampleFive = await axios.get(`https://meme-api.herokuapp.com/gimme/${subReddits[4]}/50`)
-        const partSampleSix = await axios.get(`https://meme-api.herokuapp.com/gimme/${subReddits[5]}/50`)
-        const partSampleSeven = await axios.get(`https://meme-api.herokuapp.com/gimme/${subReddits[6]}/50`)
-        const partSampleEight = await axios.get(`https://meme-api.herokuapp.com/gimme/${subReddits[7]}/50`)
-        const partSampleNine = await axios.get(`https://meme-api.herokuapp.com/gimme/${subReddits[8]}/50`)
-        const partSampleTen = await axios.get(`https://meme-api.herokuapp.com/gimme/${subReddits[9]}/50`)
-        const memeSampleToAdd = [ 
-          ...partSampleOne.data.memes, 
-          ...partSampleTwo.data.memes, 
-          ...partSampleThree.data.memes, 
-          ...partSampleFour.data.memes, 
-          ...partSampleFive.data.memes, 
-          ...partSampleSix.data.memes, 
-          ...partSampleSeven.data.memes, 
-          ...partSampleEight.data.memes, 
-          ...partSampleNine.data.memes, 
-          ...partSampleTen.data.memes  ]
-        //const useableSample = []
-        //for (let i = 0; i < rawSample.length; i++){
-        //  if (!useableSample.some(num => num === rawSample[i])){
-        //    useableSample.push(rawSample[i])
-        //  }
-        //}     --revisit to get unique memes each time- need the if in the for loop to target sometthink like the url rather than the whole object. 
+        let memeSampleToAdd = []
+        for (let i = 0; i < subReddits.length; i++){
+          const { data } = await axios.get(`https://meme-api.herokuapp.com/gimme/${subReddits[i]}/50`)
+          for (let i = 0; i < data.memes.length; i++){
+            memeSampleToAdd.push(data.memes[i])
+          }
+        }
         setMemeSample(memeSampleToAdd)
-        //setSearchedMemes(rawSample)
         const smallMemeSampleToAdd = []
         for (let i = 0; i < smallMemeSampleSize; i++){
           smallMemeSampleToAdd.push(memeSampleToAdd[Math.floor(Math.random() * memeSampleToAdd.length)])
         }
-        console.log(smallMemeSampleToAdd)
         setSmallMemeSample(smallMemeSampleToAdd)
+
+        console.log(smallMemeSampleToAdd[0])
       } catch (err) {
         console.log(err)
       }
@@ -72,46 +43,122 @@ const Home = () => {
   }, [])
 
 
-  const randomise = () => {
+  const randomiseSmallSample = () => {
     const smallMemeSampleToAdd = []
         for (let i = 0; i < smallMemeSampleSize; i++){
           smallMemeSampleToAdd.push(memeSample[Math.floor(Math.random() * memeSample.length)])
         }
-        console.log(smallMemeSampleToAdd)
         setSmallMemeSample(smallMemeSampleToAdd)
   }
 
-  const handleSearch = (e) => {
-      let searchedMemesToAdd
-      if (e.target.value !== ''){
-        searchedMemesToAdd = memeSample.filter(meme => meme.title.toLowerCase().includes(e.target.value.toLowerCase()))
-        //setMessage('No results- Please refine your search criteria')
+
+  const handleChange = (e) => {
+    setSearchBarText(e.target.value)
+  }
+
+
+  const handleSearch = async(e) => {
+    e.preventDefault()
+    try {
+      const { data } = await axios.get(`https://meme-api.herokuapp.com/gimme/${searchBarText.replace(/\s/g, '')}/${smallMemeSampleSize}`)
+      setSmallMemeSample(data.memes)
+    } catch {
+      console.log('subreddit does not exsist- here are some memes we think you would like')
+      let searchAttemptLayer2 = []
+      if (searchBarText !== ''){
+        for (let i = 0; i < memeSample.length; i++){
+          if(memeSample[i].title.toLowerCase().includes(searchBarText.toLowerCase())){
+            searchAttemptLayer2.push(memeSample[i])
+          }
+        }
+        if(searchAttemptLayer2.length < minimumMemeSampleSize){
+          console.log('search not found big enough sample')
+        } else {
+          setSmallMemeSample(searchAttemptLayer2.slice(0, smallMemeSampleSize))
+        }
       } else {
-        searchedMemesToAdd = [ ...memeSample ]
+        console.log('nothing searched for')
       }
-      setSearchedMemes(searchedMemesToAdd)
-      console.log(searchedMemesToAdd)
+    }
+    
   }
 
   return (
-    <>
-      <input type='text' placeholder='search ...' onChange={handleSearch}></input>
-      <button onClick={randomise}>Randomise</button>
-      <Container>
-        <Row>
-          {smallMemeSample.map((meme, idx) => 
-            <Col key={idx} true lg="auto" className='mb-2'> {/* if we use the unique function above  change the key to the meme.url */}
-                <Card> 
-                <Card.Img src={meme.preview[1]} />
-                  <Card.Body className='title'>
-                    <Card.Title >{meme.title}</Card.Title>
-                  </Card.Body>
-                </Card>
-            </Col>
-          )}
-        </Row>
-      </Container>
+  <main>
+    {smallMemeSample.length ?
+      <>
+      <div className='leftbox'>
+        <Card>
+          <Card.Img src={smallMemeSample[0].preview[1]} />
+          <Card.Body className='title'>
+            <Card.Title>{smallMemeSample[0].title}</Card.Title>
+          </Card.Body>
+        </Card>
+      </div>
+      <div className='middlebox'>
+        <div className='middletopbox'>
+          <Card>
+            <Card.Img src={smallMemeSample[1].preview[1]} /> 
+            <Card.Body className='title'>
+              <Card.Title>{smallMemeSample[1].title}</Card.Title>
+            </Card.Body>
+          </Card>
+          <Card>
+            <Card.Img src={smallMemeSample[2].preview[1]} />  
+            <Card.Body className='title'>
+              <Card.Title>{smallMemeSample[2].title}</Card.Title>
+            </Card.Body>
+          </Card>
+          <Card>
+            <Card.Img src={smallMemeSample[3].preview[1]} /> 
+            <Card.Body className='title'>
+              <Card.Title>{smallMemeSample[3].title}</Card.Title>
+            </Card.Body>
+          </Card>
+        </div>
+        <div className='middlemiddlebox'>
+          <>
+            <form onSubmit={handleSearch}>
+            <input type='text' placeholder='search a subreddit...' onChange={handleChange} ></input>
+            <input type='submit' value='go'></input>
+            </form>
+            <button onClick={randomiseSmallSample}>Randomise</button>
+          </>
+        </div>
+        <div className='middlebottombox'>
+          <Card>
+              <Card.Img src={smallMemeSample[4].preview[1]} /> 
+              <Card.Body className='title'>
+                <Card.Title>{smallMemeSample[4].title}</Card.Title>
+              </Card.Body>
+            </Card>
+            <Card>
+              <Card.Img src={smallMemeSample[5].preview[1]} /> 
+              <Card.Body className='title'>
+                <Card.Title>{smallMemeSample[5].title}</Card.Title>
+              </Card.Body>
+            </Card>
+            <Card>
+              <Card.Img src={smallMemeSample[6].preview[1]} /> 
+              <Card.Body className='title'>
+                <Card.Title>{smallMemeSample[6].title}</Card.Title>
+              </Card.Body>
+            </Card>
+        </div>
+      </div>
+      <div className='rightbox'>
+      <Card>
+          <Card.Img src={smallMemeSample[7].preview[1]} /> 
+          <Card.Body className='title'>
+            <Card.Title>{smallMemeSample[7].title}</Card.Title>
+          </Card.Body>
+        </Card>
+      </div>
     </>
+    :
+    <p>loading..</p>
+    }
+    </main>
   )
 }
 

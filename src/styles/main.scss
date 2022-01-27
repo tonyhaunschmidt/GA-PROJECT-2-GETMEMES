@@ -2,6 +2,42 @@ body {
   background-color: #272626;
 }
 
+
+main{
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  .leftbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .middlebox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .middletopbox{
+      display: flex;
+      align-items: flex-end;
+    }
+    .middlemiddlebox{
+
+    }
+    .middlebottombox{
+      display: flex;
+      align-items: flex-start;
+    }
+  }
+  .rightbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+
+
+
 .title {
   display: none;
   font-size: small;
