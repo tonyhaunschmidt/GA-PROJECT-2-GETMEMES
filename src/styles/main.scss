@@ -116,6 +116,17 @@ main{
   img {
     max-height: 100%;
   }
+  .card-title{
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    border-radius: 0 0 5px 5px;
+  }
+  a {
+    text-decoration: none;
+    font-size: small;
+    font-weight: normal;
+  }
 }
 
 .cog {

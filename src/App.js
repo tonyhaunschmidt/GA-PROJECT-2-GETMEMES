@@ -10,7 +10,7 @@ import MemePage from './components/MemePage'
 
 
 const App = () => {
- return (
+  return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Home />}/>
