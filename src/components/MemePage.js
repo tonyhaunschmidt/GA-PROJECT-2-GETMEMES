@@ -56,7 +56,7 @@ const MemePage = () => {
             <Card>
               <Card.Img src={clickedOnMeme.preview[1]} />
               <Card.Body className='title'>
-                <Card.Title>{clickedOnMeme.title}</Card.Title>
+                <Card.Title><p>{clickedOnMeme.title} <br></br><span className='subredditinfo'>subreddit- {clickedOnMeme.subreddit}</span></p></Card.Title>
               </Card.Body>
             </Card>
           </div>

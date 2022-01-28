@@ -149,7 +149,7 @@ main{
   flex-direction: column;
   overflow: hidden;
   align-items: center;
-  #randomise {
+  button {
     border: white solid 1px;
     border-radius: 5px;
     font-size: 16px;
@@ -167,20 +167,25 @@ main{
     margin-bottom: 40px;
     margin-top: 10px;
   }
+  
   .meme-wrapper {
     display: flex;
     justify-content: space-around;
-    max-height: 800px;
+    height: 80%;
     .mainmemecontainer {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      max-width: 500px;
+      max-width: 100%;
       width: 40vw;
       margin-right: 50px;
       .card {
         animation: scaling 1s;
-        max-height: 600px;
+        max-width: 100%;
+        max-height: 100%;
+        img{
+          max-height: 80%;
+        }
         .title {
           display: initial;
           background-color: white;
@@ -242,6 +247,7 @@ main{
   height: 15px;
 }
 
+
 //About page
 section {
   height: 90vh;
@@ -255,6 +261,7 @@ section {
   }
 }
 
+
 //Animations
 
 span {
@@ -266,6 +273,8 @@ span {
     animation: scatter 0.5s infinite;
   }
 }
+
+
 
 @keyframes scatter {
   0% {
@@ -291,3 +300,15 @@ span {
   img {
   animation: scaling 1s;
   }
+
+  .subredditinfo {
+    font-size: 10px;
+    color: rgb(199, 194, 194);
+    animation: none;
+    &:hover {
+      animation: none;
+    }
+  }
+
+
+  
