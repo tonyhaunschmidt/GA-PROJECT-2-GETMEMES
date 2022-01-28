@@ -23,6 +23,7 @@ main{
     justify-content: center;
     width: 45%;
     max-width: 462px;
+    min-width: 462px;
     .middletopbox{
       display: flex;
       align-items: flex-end;
@@ -33,6 +34,7 @@ main{
       justify-content: space-around;
       margin: 3px 3px;
       height: 8%;
+      min-height: 67px;
       border: white solid 2px;
       align-items: center;
       border-radius: 5px;
@@ -67,23 +69,12 @@ main{
           color: white;
           font-weight: 500;
         }
-        .span-bracket {
-          color: #e4b859;
-        }
-        #span-get {
-          color: #ddc38c;
-        }
-        #span-meme {
-          color: #569CD6;
-        }
       }
-      
     }
     .middlebottombox{
       display: flex;
       align-items: flex-start;
       height: 46%;
-      // flex-shrink: 2;
     }
   }
   .rightbox{
@@ -107,7 +98,7 @@ main{
   border-color: #272626;
   flex-shrink: 2;
   background-color: #272626;
-  &:hover{
+  &:hover {
     .title {
       display: initial;
       font-size: small;
@@ -129,31 +120,107 @@ main{
   }
 }
 
-.cog {
-  background-image: url('../images/cog-black.jpeg');
-  background-size: contain;
-  width: 50px;
-  height: 50px;
+.span-bracket {
+  color: #e4b859;
+}
+#span-get {
+  color: #ddc38c;
+}
+#span-meme {
+  color: #569CD6;
 }
 
+//Memepage Component
 .memepage {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  // justify-content: space-around;
   align-items: center;
-  .memecontainer {
-    height: 50vh;
+  button {
+    border: white solid 1px;
+    border-radius: 5px;
+    min-width: 130px;
+    background-color: white;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    margin-right: 10px;
+    font-size: 22px;
+  }
+  .top-buttons {
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    .card {
-      width: 30%;
+    align-items: baseline;
+    margin-bottom: 40px;
+    margin-top: 10px;
+  }
+  .meme-wrapper {
+    display: flex;
+    justify-content: space-around;
+    max-height: 800px;
+    .mainmemecontainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 500px;
+      width: 40vw;
+      margin-right: 50px;
+      .card {
+        animation: scaling 1s;
+        .img {
+            min-height: 100%;
+        }
+        .title {
+          display: initial;
+          background-color: white;
+          border-radius: 0 0 5px 5px;
+        }
+      }
     }
-
+    .memecontainer {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+      margin-left: 50px;
+      width: 40vw;
+      .card {
+        width: 30%;
+      }
+      .memecontainer-top {
+        display: flex;
+        align-items: flex-end;
+        height: 46%;
+        .card {
+          max-width: 100%;
+        }
+      }
+      .memecontainer-bottom {
+        display: flex;
+        align-items: flex-start;
+        height: 46%;
+        .card {
+          max-width: 100%;
+        }
+      }
+    }
   }
 }
 
-.loading{
-  color: white;
+.spinner-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .spinner {
+    max-width: 90px;
+  }
+  .loading{
+    color: white;
+    margin-top: 10px;
+    font-size: 22px;
+  }
 }
 
 //Animations
@@ -162,7 +229,10 @@ span {
   color: #5362F6;
   text-shadow: textShadow(0.25, 6, #E485F8);
   position: relative;
-  animation: scatter 1s 4;
+  animation: scatter 0.5s 4;
+  &:hover {
+    animation: scatter 0.5s infinite;
+  }
 }
 
 @keyframes scatter {
@@ -170,7 +240,7 @@ span {
     top: 0;
   }
   50% {
-    top: -5px;
+    top: -3px;
   }
   100% {
     top: 0;
