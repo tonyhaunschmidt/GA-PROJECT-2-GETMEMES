@@ -18,6 +18,7 @@ const Home = () => {
   const [ memeSample, setMemeSample ] = useState([])
   const [ smallMemeSample, setSmallMemeSample ] = useState([])
   const [ searchBarText, setSearchBarText ] = useState('')
+  const [ errorMessage, setErrorMessage ] = useState('')
 
   const subReddits = ['memes', 'dankememes', 'fellowkids', 'meme', 'animemes', 'dndmemes', 'lotrmemes', 'prequelmemes', 'historymemes', 'raimimemes', 'donaldtrumpmemes']
 
@@ -58,6 +59,7 @@ const Home = () => {
 
   const handleChange = (e) => {
     setSearchBarText(e.target.value)
+    setErrorMessage('')
   }
 
 
@@ -67,7 +69,7 @@ const Home = () => {
       const { data } = await axios.get(`https://meme-api.herokuapp.com/gimme/${searchBarText.replace(/\s/g, '')}/${smallMemeSampleSize}`)
       setSmallMemeSample(data.memes)
     } catch {
-      console.log('subreddit does not exsist- here are some memes we think you would like')
+      setErrorMessage('subreddit not found- here are some memes we think you would like')
       let searchAttemptLayer2 = []
       if (searchBarText !== ''){
         for (let i = 0; i < memeSample.length; i++){
@@ -75,14 +77,13 @@ const Home = () => {
             searchAttemptLayer2.push(memeSample[i])
           }
         }
-        if(searchAttemptLayer2.length < minimumMemeSampleSize){
-          console.log('search not found big enough sample')
+        if(searchAttemptLayer2.length !== 0){
+          setErrorMessage('subreddit not found- Here are some randoms')
           randomiseSmallSample()
         } else {
           setSmallMemeSample(searchAttemptLayer2.slice(0, smallMemeSample + 1))
         }
       } else {
-        console.log('nothing searched for')
         randomiseSmallSample()
       }
     }
@@ -129,7 +130,7 @@ const Home = () => {
             </Link>
           </Card>
         </div>
-        <CenterBar handleSearch={handleSearch} randomiseSmallSample={randomiseSmallSample} handleChange={handleChange}  />
+        <CenterBar handleSearch={handleSearch} randomiseSmallSample={randomiseSmallSample} handleChange={handleChange}  errorMessage={errorMessage}/>
         <div className='middlebottombox'>
           <Card>
             <Link to={'/meme'} state={{ ...smallMemeSample[4] }}>

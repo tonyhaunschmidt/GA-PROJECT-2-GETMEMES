@@ -28,7 +28,7 @@ const MemePage = () => {
         setRelatedMemesSample(data.memes)
         const randomSubReddit = subReddits[Math.floor(Math.random() * subReddits.length)]
         const randomMeme = await axios.get(`https://meme-api.herokuapp.com/gimme/${randomSubReddit}`)
-        setRandomisedMeme(randomMeme)
+        setRandomisedMeme(randomMeme.data)
       } catch (error) {
         console.log(error)
       }
@@ -37,22 +37,13 @@ const MemePage = () => {
   }, [location])
 
 
-  const randomMeme = async (e) => {
-    const randomSubReddit = subReddits[Math.floor(Math.random() * subReddits.length)]
-    try {
-      const { data } = await axios.get(`https://meme-api.herokuapp.com/gimme/${randomSubReddit}`)
-      setRandomisedMeme(data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
 
   return (
     <section className='memepage'>
+      {console.log(randomisedMeme)}
       <div className='top-buttons'>
       <Link to='/'><p>.<span id='span-get' className='pulse'>get</span><span className='span-bracket'>(</span><span id='span-meme'>Memes</span><span className='span-bracket'>)</span></p></Link>
-      <Link to={'/meme'} state={{ ...randomisedMeme }}><p>Randomise</p></Link>
+      <Link to={'/meme'} state={{ ...randomisedMeme }}><button>Randomise</button></Link>
       </div>
       { relatedMemesSample.length ?
         <div className='meme-wrapper'>

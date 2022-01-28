@@ -31,7 +31,8 @@ main{
     }
     .middlemiddlebox{
       display: flex;
-      justify-content: space-around;
+      flex-direction: column;
+      justify-content: flex-end;
       margin: 3px 3px;
       height: 8%;
       min-height: 67px;
@@ -221,6 +222,15 @@ main{
     margin-top: 10px;
     font-size: 22px;
   }
+}
+
+.errormessage {
+  font-size: 8px;
+  color: red; 
+  margin: 0;
+}
+.errorcontainer{
+  height: 15px;
 }
 
 //Animations

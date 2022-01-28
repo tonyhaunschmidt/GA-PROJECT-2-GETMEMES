@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CenterBar = ({ handleSearch, randomiseSmallSample, handleChange }) => {
+const CenterBar = ({ handleSearch, randomiseSmallSample, handleChange, errorMessage }) => {
   return (
   <div className='middlemiddlebox'>
     <div className='search'>
@@ -9,6 +9,9 @@ const CenterBar = ({ handleSearch, randomiseSmallSample, handleChange }) => {
       <button onClick={handleSearch} id='submit' type='submit'>.<span id='span-get' className='pulse'>get</span><span className='span-bracket'>(</span><span id='span-meme'>Memes</span><span className='span-bracket'>)</span></button>
       </form>
       <button onClick={randomiseSmallSample}>Randomise</button>
+    </div>
+    <div className='errorcontainer'>
+      <p className='errormessage'>{errorMessage}</p>
     </div>
   </div>
   )
