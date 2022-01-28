@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 import CenterBar from './CenterBar'
+import Spinner from '../utilities/Spinner'
 
 //bootstrap
 import Card from 'react-bootstrap/Card'
@@ -168,7 +169,7 @@ const Home = () => {
       </div>
     </>
     :
-    <p className='loading'>Getting (Memes)....</p>
+    <Spinner />
     }
     </main>
   )

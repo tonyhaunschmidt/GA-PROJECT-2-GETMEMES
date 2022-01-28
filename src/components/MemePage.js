@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import axios from 'axios'
 
+import Spinner from '../utilities/Spinner'
+
 //bootstrap
 import Card from 'react-bootstrap/Card'
 
@@ -48,10 +50,12 @@ const MemePage = () => {
 
   return (
     <section className='memepage'>
-      <Link to='/'><p>.get(Memes)</p></Link>
+      <div className='top-buttons'>
+      <Link to='/'><p>.<span id='span-get' className='pulse'>get</span><span className='span-bracket'>(</span><span id='span-meme'>Memes</span><span className='span-bracket'>)</span></p></Link>
       <Link to={'/meme'} state={{ ...randomisedMeme }}><p>Randomise</p></Link>
+      </div>
       { relatedMemesSample.length ?
-        <>
+        <div className='meme-wrapper'>
           <div className='mainmemecontainer'>
             <Card>
               <Card.Img src={clickedOnMeme.preview[1]} />
@@ -61,20 +65,44 @@ const MemePage = () => {
             </Card>
           </div>
           <div className='memecontainer'>
-            {relatedMemesSample.map((meme, index) =>
-              <Card key={index}>
-                <Link to={'/meme'} state={{ ...meme }}>
-                  <Card.Img src={meme.preview[1]} />
-                  <Card.Body className='title'>
-                    <Card.Title>{meme.title}</Card.Title>
-                  </Card.Body>
+            <div className='memecontainer-top'>
+            <Card>
+                <Link to={'/meme'} state={{ ...relatedMemesSample[0] }}>
+                  <Card.Img src={relatedMemesSample[0].preview[1]} />
                 </Link>
               </Card>
-            )}
+            <Card>
+              <Link to={'/meme'} state={{ ...relatedMemesSample[1] }}>
+                <Card.Img src={relatedMemesSample[1].preview[1]} />
+              </Link>
+            </Card>
+            <Card>
+                <Link to={'/meme'} state={{ ...relatedMemesSample[2] }}>
+                  <Card.Img src={relatedMemesSample[2].preview[1]} />
+                </Link>
+              </Card>
+            </div>
+            <div className='memecontainer-bottom'>
+              <Card>
+                  <Link to={'/meme'} state={{ ...relatedMemesSample[3] }}>
+                    <Card.Img src={relatedMemesSample[3].preview[1]} />
+                  </Link>
+                </Card>
+              <Card>
+                <Link to={'/meme'} state={{ ...relatedMemesSample[4] }}>
+                  <Card.Img src={relatedMemesSample[4].preview[1]} />
+                </Link>
+              </Card>
+              <Card>
+                  <Link to={'/meme'} state={{ ...relatedMemesSample[5] }}>
+                    <Card.Img src={relatedMemesSample[5].preview[1]} />
+                  </Link>
+                </Card>
+              </div>
           </div>
-        </>
+        </div>
         :
-        <p>error</p>
+        <Spinner />
       }
     </section>
     
