@@ -56,6 +56,7 @@ const Home = () => {
           smallMemeSampleToAdd.push(memeSample[Math.floor(Math.random() * memeSample.length)])
         }
         setSmallMemeSample(smallMemeSampleToAdd)
+        setErrorMessage('')
   }
 
 
@@ -71,22 +72,9 @@ const Home = () => {
       const { data } = await axios.get(`https://meme-api.herokuapp.com/gimme/${searchBarText.replace(/\s/g, '')}/${smallMemeSampleSize}`)
       setSmallMemeSample(data.memes)
     } catch {
-      setErrorMessage('subreddit not found- here are some memes we think you would like')
-      let searchAttemptLayer2 = []
+      randomiseSmallSample()
       if (searchBarText !== ''){
-        for (let i = 0; i < memeSample.length; i++){
-          if(memeSample[i].title.toLowerCase().includes(searchBarText.toLowerCase())){
-            searchAttemptLayer2.push(memeSample[i])
-          }
-        }
-        if(searchAttemptLayer2.length !== 0){
           setErrorMessage('subreddit not found- Here are some randoms')
-          randomiseSmallSample()
-        } else {
-          setSmallMemeSample(searchAttemptLayer2.slice(0, smallMemeSample + 1))
-        }
-      } else {
-        randomiseSmallSample()
       }
     }
   }
