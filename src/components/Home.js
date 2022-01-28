@@ -13,7 +13,7 @@ import Card from 'react-bootstrap/Card'
 const Home = () => {
 
   const smallMemeSampleSize = 8
-  const minimumMemeSampleSize = 1
+  const minimumMemeSampleSize = 0
   const [ memeSample, setMemeSample ] = useState([])
   const [ smallMemeSample, setSmallMemeSample ] = useState([])
   const [ searchBarText, setSearchBarText ] = useState('')
@@ -168,7 +168,7 @@ const Home = () => {
       </div>
     </>
     :
-    <p>loading..</p>
+    <p className='loading'>Getting (Memes)....</p>
     }
     </main>
   )
