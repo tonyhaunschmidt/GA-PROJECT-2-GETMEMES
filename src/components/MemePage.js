@@ -12,50 +12,51 @@ const MemePage = () => {
 
 
   const location = useLocation()
-  let currentMeme = location.state
+  const clickedOnMeme = location.state
+  const [ randomisedMeme, setRandomisedMeme ] = useState({})
   
 
   const relatedMemesSampleSize = 10
   const [ relatedMemesSample, setRelatedMemesSample ] = useState([])
 
   useEffect(() =>{
-    
-    const getMemes = async() => {
+    const getRelatedMemes = async() => {
       try {
-        const { data } = await axios.get(`https://meme-api.herokuapp.com/gimme/${currentMeme.subreddit}/${relatedMemesSampleSize}`)
+        const { data } = await axios.get(`https://meme-api.herokuapp.com/gimme/${clickedOnMeme.subreddit}/${relatedMemesSampleSize}`)
         setRelatedMemesSample(data.memes)
+        const randomSubReddit = subReddits[Math.floor(Math.random() * subReddits.length)]
+        const randomMeme = await axios.get(`https://meme-api.herokuapp.com/gimme/${randomSubReddit}`)
+        setRandomisedMeme(randomMeme)
       } catch (error) {
         console.log(error)
       }
     }
-    getMemes()
+    getRelatedMemes()
   }, [location])
 
 
-
   const randomMeme = async (e) => {
-  //  const randomSubReddit = subReddits[Math.floor(Math.random() * subReddits.length)]
-  //  try {
-  //    const { data } = await axios.get(`https://meme-api.herokuapp.com/gimme/${randomSubReddit}/1}`)
-  //    setCurrentMeme(data.memes[0])
-  //  } catch (error) {
-  //    console.log(error)
-  //  }
+    const randomSubReddit = subReddits[Math.floor(Math.random() * subReddits.length)]
+    try {
+      const { data } = await axios.get(`https://meme-api.herokuapp.com/gimme/${randomSubReddit}`)
+      setRandomisedMeme(data)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
 
   return (
     <section className='memepage'>
-      {console.log(currentMeme)}
       <Link to='/'><p>.get(Memes)</p></Link>
-      <button onClick={randomMeme()}>Randomise</button>
+      <Link to={'/meme'} state={{ ...randomisedMeme }}><p>Randomise</p></Link>
       { relatedMemesSample.length ?
         <>
           <div className='mainmemecontainer'>
             <Card>
-              <Card.Img src={currentMeme.preview[1]} />
+              <Card.Img src={clickedOnMeme.preview[1]} />
               <Card.Body className='title'>
-                <Card.Title>{currentMeme.title}</Card.Title>
+                <Card.Title>{clickedOnMeme.title}</Card.Title>
               </Card.Body>
             </Card>
           </div>
