@@ -42,10 +42,13 @@ const MemePage = () => {
 
   return (
     <section className='memepage'>
+      <Link to={'/about'}>
+      <button id='i'>i</button>
+      </Link>
       {console.log(randomisedMeme)}
       <div className='top-buttons'>
       <Link to='/'><p>.<span id='span-get' className='pulse'>get</span><span className='span-bracket'>(</span><span id='span-meme'>Memes</span><span className='span-bracket'>)</span></p></Link>
-      <Link to={'/meme'} state={{ ...randomisedMeme }}><button>Randomise</button></Link>
+      <Link to={'/meme'} state={{ ...randomisedMeme }}><button id='randomise'>Randomise</button></Link>
       </div>
       { relatedMemesSample.length ?
         <div className='meme-wrapper'>

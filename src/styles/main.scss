@@ -149,10 +149,10 @@ main{
   flex-direction: column;
   overflow: hidden;
   align-items: center;
-  button {
+  #randomise {
     border: white solid 1px;
     border-radius: 5px;
-    min-width: 130px;
+    font-size: 16px;
     background-color: white;
   }
   a {
@@ -180,7 +180,6 @@ main{
       margin-right: 50px;
       .card {
         animation: scaling 1s;
-        width: 80%;
         max-height: 600px;
         .title {
           display: initial;
@@ -241,6 +240,19 @@ main{
 }
 .errorcontainer{
   height: 15px;
+}
+
+//About page
+section {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  a {
+    text-decoration: none;
+  }
 }
 
 //Animations
