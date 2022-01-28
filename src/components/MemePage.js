@@ -10,7 +10,9 @@ import Card from 'react-bootstrap/Card'
 
 const MemePage = () => {
 
-  const subReddits = ['memes', 'dankememes', 'fellowkids', 'meme', 'animemes', 'dndmemes', 'lotrmemes', 'prequelmemes', 'historymemes', 'raimimemes', 'donaldtrumpmemes']
+  const subReddits = ['memes', 'dankememes', 'fellowkids', 'meme', 'animemes', 'dndmemes',
+  'lotrmemes', 'prequelmemes', 'historymemes', 'raimimemes', 'donaldtrumpmemes', 
+  'gamingmemes', 'causaluk', 'memes_of_the_dank', 'memesirl']
 
 
   const location = useLocation()
