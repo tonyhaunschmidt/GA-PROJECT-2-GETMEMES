@@ -94,7 +94,7 @@ const Home = () => {
       <div className='leftbox'>
         <Card>
           <Link to={'/meme'} state={{ ...smallMemeSample[0] }}>
-            <Card.Img src={smallMemeSample[0].preview[0]} />
+            <Card.Img src={smallMemeSample[0].preview[1]} />
             <Card.Body className='title'>
               <Card.Title>{smallMemeSample[0].title}</Card.Title>
             </Card.Body>
@@ -105,7 +105,7 @@ const Home = () => {
         <div className='middletopbox'>
           <Card>
             <Link to={'/meme'} state={{ ...smallMemeSample[1] }}>
-              <Card.Img src={smallMemeSample[1].preview[0]} /> 
+              <Card.Img src={smallMemeSample[1].preview[1]} /> 
               <Card.Body className='title'>
                 <Card.Title>{smallMemeSample[1].title}</Card.Title>
               </Card.Body>
@@ -113,7 +113,7 @@ const Home = () => {
           </Card>
           <Card>
             <Link to={'/meme'} state={{ ...smallMemeSample[2] }}>
-              <Card.Img src={smallMemeSample[2].preview[0]} />  
+              <Card.Img src={smallMemeSample[2].preview[1]} />  
               <Card.Body className='title'>
                 <Card.Title>{smallMemeSample[2].title}</Card.Title>
               </Card.Body>
@@ -121,7 +121,7 @@ const Home = () => {
           </Card>
           <Card>
             <Link to={'/meme'} state={{ ...smallMemeSample[3] }}>
-              <Card.Img src={smallMemeSample[3].preview[0]} /> 
+              <Card.Img src={smallMemeSample[3].preview[1]} /> 
               <Card.Body className='title'>
                 <Card.Title>{smallMemeSample[3].title}</Card.Title>
               </Card.Body>
@@ -132,7 +132,7 @@ const Home = () => {
         <div className='middlebottombox'>
           <Card>
             <Link to={'/meme'} state={{ ...smallMemeSample[4] }}>
-              <Card.Img src={smallMemeSample[4].preview[0]} /> 
+              <Card.Img src={smallMemeSample[4].preview[1]} /> 
               <Card.Body className='title'>
                 <Card.Title>{smallMemeSample[4].title}</Card.Title>
               </Card.Body>
@@ -140,7 +140,7 @@ const Home = () => {
           </Card>
           <Card>
             <Link to={'/meme'} state={{ ...smallMemeSample[5] }}>
-              <Card.Img src={smallMemeSample[5].preview[0]} /> 
+              <Card.Img src={smallMemeSample[5].preview[1]} /> 
               <Card.Body className='title'>
                 <Card.Title>{smallMemeSample[5].title}</Card.Title>
               </Card.Body>
@@ -148,7 +148,7 @@ const Home = () => {
           </Card>
           <Card>
             <Link to={'/meme'} state={{ ...smallMemeSample[6] }}>
-              <Card.Img src={smallMemeSample[6].preview[0]} /> 
+              <Card.Img src={smallMemeSample[6].preview[1]} /> 
               <Card.Body className='title'>
                 <Card.Title>{smallMemeSample[6].title}</Card.Title>
               </Card.Body>
@@ -159,7 +159,7 @@ const Home = () => {
       <div className='rightbox'>
         <Card>
           <Link to={'/meme'} state={{ ...smallMemeSample[7] }}>
-            <Card.Img src={smallMemeSample[7].preview[0]} /> 
+            <Card.Img src={smallMemeSample[7].preview[1]} /> 
             <Card.Body className='title'>
               <Card.Title>{smallMemeSample[7].title}</Card.Title>
             </Card.Body>
