@@ -125,6 +125,22 @@ main{
   height: 50px;
 }
 
+.memepage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .memecontainer {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    .card {
+      width: 30%;
+    }
+
+  }
+}
+
 //Animations
 
 span {

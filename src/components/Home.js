@@ -76,11 +76,13 @@ const Home = () => {
         }
         if(searchAttemptLayer2.length < minimumMemeSampleSize){
           console.log('search not found big enough sample')
+          randomiseSmallSample()
         } else {
           setSmallMemeSample(searchAttemptLayer2.slice(0, smallMemeSampleSize))
         }
       } else {
         console.log('nothing searched for')
+        randomiseSmallSample()
       }
     }
   }

@@ -8,17 +8,20 @@ import Card from 'react-bootstrap/Card'
 
 const MemePage = () => {
 
+  const subReddits = ['memes', 'dankememes', 'fellowkids', 'meme', 'animemes', 'dndmemes', 'lotrmemes', 'prequelmemes', 'historymemes', 'raimimemes', 'donaldtrumpmemes']
+
+
   const location = useLocation()
-  const currentMeme = location.state
+  let currentMeme = location.state
   
 
   const relatedMemesSampleSize = 10
   const [ relatedMemesSample, setRelatedMemesSample ] = useState([])
 
   useEffect(() =>{
+    
     const getMemes = async() => {
       try {
-        console.log(currentMeme.subreddit)
         const { data } = await axios.get(`https://meme-api.herokuapp.com/gimme/${currentMeme.subreddit}/${relatedMemesSampleSize}`)
         setRelatedMemesSample(data.memes)
       } catch (error) {
@@ -30,15 +33,33 @@ const MemePage = () => {
 
 
 
+  const randomMeme = async (e) => {
+  //  const randomSubReddit = subReddits[Math.floor(Math.random() * subReddits.length)]
+  //  try {
+  //    const { data } = await axios.get(`https://meme-api.herokuapp.com/gimme/${randomSubReddit}/1}`)
+  //    setCurrentMeme(data.memes[0])
+  //  } catch (error) {
+  //    console.log(error)
+  //  }
+  }
 
 
   return (
-    <section>
+    <section className='memepage'>
+      {console.log(currentMeme)}
+      <Link to='/'><p>.get(Memes)</p></Link>
+      <button onClick={randomMeme()}>Randomise</button>
       { relatedMemesSample.length ?
         <>
-          {console.log(relatedMemesSample)}
-          <img src={currentMeme.preview[1]} alt={currentMeme.title}/>
-          <div>
+          <div className='mainmemecontainer'>
+            <Card>
+              <Card.Img src={currentMeme.preview[1]} />
+              <Card.Body className='title'>
+                <Card.Title>{currentMeme.title}</Card.Title>
+              </Card.Body>
+            </Card>
+          </div>
+          <div className='memecontainer'>
             {relatedMemesSample.map((meme, index) =>
               <Card key={index}>
                 <Link to={'/meme'} state={{ ...meme }}>
