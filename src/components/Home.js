@@ -19,7 +19,9 @@ const Home = () => {
   const [ smallMemeSample, setSmallMemeSample ] = useState([])
   const [ searchBarText, setSearchBarText ] = useState('')
 
-  const subReddits = ['memes', 'dankememes', 'fellowkids', 'meme', 'animemes', 'dndmemes', 'lotrmemes', 'prequelmemes', 'historymemes', 'raimimemes', 'donaldtrumpmemes']
+  const subReddits = ['memes', 'dankememes', 'fellowkids', 'meme', 'animemes', 'dndmemes',
+  'lotrmemes', 'prequelmemes', 'historymemes', 'raimimemes', 'donaldtrumpmemes', 
+  'gamingmemes', 'causaluk', 'memes_of_the_dank', 'memesirl']
 
 
 
@@ -92,6 +94,7 @@ const Home = () => {
   <main>
     {smallMemeSample.length ?
       <>
+      <button id='i'>i</button>
       <div className='leftbox'>
         <Card>
           <Link to={'/meme'} state={{ ...smallMemeSample[0] }}>
