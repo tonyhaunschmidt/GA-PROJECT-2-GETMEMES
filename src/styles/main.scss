@@ -149,11 +149,10 @@ main{
   flex-direction: column;
   overflow: hidden;
   align-items: center;
-  height: 90vh;
   button {
     border: white solid 1px;
     border-radius: 5px;
-    min-width: 130px;
+    font-size: 16px;
     background-color: white;
   }
   a {
@@ -246,6 +245,20 @@ main{
 }
 .errorcontainer{
   height: 15px;
+}
+
+
+//About page
+section {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  a {
+    text-decoration: none;
+  }
 }
 
 

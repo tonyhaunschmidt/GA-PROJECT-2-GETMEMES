@@ -83,7 +83,9 @@ const Home = () => {
   <main>
     {smallMemeSample.length ?
       <>
+      <Link to={'/about'}>
       <button id='i'>i</button>
+      </Link>
       <div className='leftbox'>
         <Card>
           <Link to={'/meme'} state={{ ...smallMemeSample[0] }}>
