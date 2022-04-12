@@ -37,7 +37,7 @@ Using the API Client, Insomnia was very useful for the planning stage of this pr
 
 We both agreed that we wanted to lean towards a nice design rather than trying to push too much functionality. For this we agreed that an image based API would be ideal and soon we landed on the concept of a meme browser.
 
-We then spent some time searching for a good meme based API before we arrived at Dev Deskan's public Meme API detailed above. The reason we decided to run with this API in the end was because the data was structured in a very simple way, there was good documentation for requesting different data pools and that the nature of this API, in that it scraps from Reddit itself, meant that we would have lots of flexibility in choosing different subreddits to customise our app as much as we wanted.  
+We then spent some time searching for a good meme based API before we arrived at Dev Deskan's public Meme API detailed above. The reason we decided to run with this API in the end was because the data was structured in a very simple way, there was good documentation for requesting different data pools and that the nature of this API, in that it scrapes from Reddit itself, meant that we would have lots of flexibility in choosing different subreddits to customise our app as much as we wanted.  
 
 Once we had decided on an API and general concept, we brainstormed design ideas and recounted a [site](https://www.inprnt.com/discover/) we had both previously seen with an interesting collage design that then offered the main inspiration for the design of our app. We then took to Excalidraw to wireframe a rough design as well as sketching the HTML breakdown and discussing how to code the collage look we wanted to achieve. 
 
@@ -46,7 +46,7 @@ Once we had decided on an API and general concept, we brainstormed design ideas 
 Tom and I pair-coded together initially to set up the react app and code the basic HTML of the homepage, however to achieve everything that we wanted to in the short timeframe we agreed that once I had coded the initial HTML of each section, Tom would then move on to the styling while I worked on the functionality. 
 
 ## REACT
-This being the first project we have done using a framework, it was exciting to see the basic capabilities of what React allows us to do and what is made much easier by implementing a framework.  
+This being the first project we have done using a framework, it was exciting to see the basic capabilities of what React allows us to do and what is made much easier by working with a framework.  
 
 To set up our React app we used the CRA package. This was daunting to use at first because this was also our introduction to installing packages into our projects as well as seeing for the first time files like package.json and the general set up of a framework which felt like a big step up from your Vanilla .js, .css & .html files. The duration of this project was a great opportunity to become more familiar with these files and understand the purpose of them and what they are used for.    
 
@@ -60,7 +60,7 @@ Another great concept of React are the hooks which are great to learn about and 
 
 ![useEffect and useState](readme_assets/useeffect_and_usestate.png)
 
-One challenging aspect of the API we chose was that on each request the memes are randomly pulled and there is no way of requesting a specific meme or collection of specific memes. Typically until now we had used the hook useParams in which the id of the meme would be passed through in the route path. So for instance if the meme had an id of '1' the path would look like 'memes/1'. useParams would then be able to take that id out of the URL and we could then code a new API request using that id to retrieve that specific meme. As this was not an option in this case a challenge for us was therefore to find a way to pass the meme you clicked on on the homepage to the meme page. One solution to this problem was to store the meme data in the browser's local storage however this felt like a misuse of local storage. I discovered that a way to do this is to include a state prop on the link tag which then passes through to the new page you're navigated to. On the new page the data passed through will be available on the location's state property which you can then retrieve by using the hook useLocation.   
+One challenging aspect of the API we chose was that on each request the memes are randomly pulled and there is no way of requesting a specific meme or collection of specific memes. Typically, until now we used the hook useParams in which the id of the meme would be passed through in the route path. So for instance if the meme had an id of '1' the path would look like 'memes/1'. useParams would then be able to take that id out of the URL and we could then code a new API request using that id to retrieve that specific meme. As this was not an option in this case a challenge for us was therefore to find a way to pass the meme you clicked on on the homepage through to the meme page. One solution to this problem was to store the meme data in the browser's local storage however this felt like a misuse of local storage. I discovered that a way to do this is to include a state prop on the link tag which then passes through to the new page you're navigated to. On the new page the data passed through will be available on the location's state property which you can then retrieve by using the hook useLocation.   
 
 ![state](readme_assets/link_state.png)
 
@@ -76,11 +76,11 @@ The Meme API we used had various custom endpoints where you can specify which su
 
 
 ## CONCLUSION AND KEY LEARNING
-I felt that React, as my first framework, definitely had a steep learning curve in order to get to grips with the general concept and being able to start applying the basic elements of the framework efficiently. However I am definitely much more comfortable using React now and I am very excited to implement it in many more projects and grow my React knowledge. I also feel that now I have learnt the basics of one framework, other frameworks will come a lot easier and so I'd love to try different frameworks in future projects too.    
+I felt that React, as my first framework, definitely had a steep learning curve in order to get to grips with the general concept and being able to start applying the basic elements of the framework efficiently. However I am definitely much more comfortable using React now and I am very excited to implement it in many more projects and grow my React knowledge. I also feel that now I have learnt the basics of one framework, other frameworks will become a lot easier and so I'd love to try different frameworks in future projects too.    
 
 This was also a great project to get to grips with APIs and understand their use in software development. It was particularly interesting reading through the documentation of the different APIs when looking for one to use as it was a good way to see how different people set up their data structures and endpoints.
 
-Working with Tom was the first substantial bit of pair coding that I have done and I think we worked very well over the 2 days complimenting each others strengths and weaknesses. 
+Working with Tom was the first substantial bit of pair-coding that I have done and I think we worked very well over the 2 days complimenting each other's strengths and weaknesses and building on each other's ideas. 
 
 ## FUTURE IMPROVEMENTS
 As this project is more focused on design, it would be great to implement more finess to the site. For example to add animation on the hover effect of the meme cards or when you randomise the memes they shrink into nothing and grow back as new memes.
