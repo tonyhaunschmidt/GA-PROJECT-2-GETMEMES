@@ -6,7 +6,7 @@
 
 This two day assignment was to, in a pair, create a front-end React App using a public API. As well as getting to showcase our newly learnt React and framework knowledge, this was a great project to get familiar with pair-coding, in which we agreed upon a shared vision and utilised each of our strengths and skills to realise that vision.
 
-My main contributions to this project was mainly functionality in the form of page navigation, handling API requests and working with the data.
+My contributions to this project was mainly functionality in the form of page navigation, handling API requests and working with the data.
 
 My newly learnt technologies for this project were SASS and React.
 
@@ -43,7 +43,7 @@ Once we had decided on an API and general concept, we brainstormed design ideas 
 
 ![wireframe](readme_assets/wireframe.png)
 
-Tom and I pair-coded together initially to set up the react app and code the basic HTML of the homepage, however to achieve everything that we wanted to in the short timeframe we agreed that once I had coded the initial HTML of each section, Tom would then move on to the styling while I worked on the functionality. 
+Tom and I pair-coded together initially to set up the react app and code the basic HTML of the homepage, however to achieve everything that we wanted to in the short timeframe we agreed that once we had coded the initial HTML of each section, Tom would then move on to the styling while I worked on the functionality. 
 
 ## REACT
 This being the first project we have done using a framework, it was exciting to see the basic capabilities of what React allows us to do and what is made much easier by working with a framework.  
@@ -80,7 +80,7 @@ I felt that React, as my first framework, definitely had a steep learning curve 
 
 This was also a great project to get to grips with APIs and understand their use in software development. It was particularly interesting reading through the documentation of the different APIs when looking for one to use as it was a good way to see how different people set up their data structures and endpoints.
 
-Working with Tom was the first substantial bit of pair-coding that I have done and I think we worked very well over the 2 days complimenting each other's strengths and weaknesses and building on each other's ideas. 
+Working with Tom was the first substantial bit of pair-coding that I have done and I think we worked very well over the 2 days complimenting each other's strengths and weaknesses and built on each other's ideas. 
 
 ## FUTURE IMPROVEMENTS
 As this project is more focused on design, it would be great to implement more finess to the site. For example to add animation on the hover effect of the meme cards or when you randomise the memes they shrink into nothing and grow back as new memes.
