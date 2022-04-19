@@ -83,7 +83,7 @@ This was also a great project to get to grips with APIs and understand their use
 Working with Tom was the first substantial bit of pair-coding that I have done and I think we worked very well over the 2 days complimenting each other's strengths and weaknesses and built on each other's ideas. 
 
 #### CHALLENGES
-* Finding a solution to passing a state from page to page without using useParams.
+* Finding a solution to passing a state from page to page.
 * Developing a visually pleasing collage with interchangeable image sizes. 
 
 #### WINS
