@@ -10,7 +10,7 @@ My contributions to this project was mainly functionality in the form of page na
 
 My newly learnt technologies for this project were SASS and React.
 
-Made in Collaboration with [Tom Murphy](https://github.com/TMurp).
+Made in collaboration with [Tom Murphy](https://github.com/TMurp).
 
 This app takes data from the following API developed by [Dev Daksan](https://github.com/D3vd): https://github.com/D3vd/Meme_Api
 
