@@ -84,7 +84,7 @@ Working with Tom was the first substantial bit of pair-coding that I have done a
 
 #### CHALLENGES
 * Finding a solution to passing a state from page to page without using useParams.
-* Developing a visually pleasing collage with interchangable image sizes. 
+* Developing a visually pleasing collage with interchangeable image sizes. 
 
 #### WINS
 * Getting to grips with React.
